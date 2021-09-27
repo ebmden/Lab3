@@ -6,24 +6,11 @@
 - Names:
   -
   -
-
 "The Machine" implementation of parsing and executing a program.
-
 The application reads a file name from the user and executes the contents of the file or sends an error if the file format is not valid.
-
 The file format is describe in "The Machine" exercise and the lab description.
-
-
 Introduction: (Describe the lab in your own words)
-
-
-
-
 Summary: (Summarize your experience with the lab, what you learned, what you liked, what you disliked, and any suggestions you have for improvement)
-
-
-
-
 """
 
 # import the readfile modules to read bytes from a file
@@ -83,22 +70,62 @@ def parse_operations(num_operations):
             print('Invalid operation:', operation_index)
             exit(1)
 
+
+def read_operand():
+    operand1 = readfile.read_byte()
+    operand2 = readfile.read_byte()
+    operand1 = int.from_bytes(operand1, 'big')
+    operand2 = int.from_bytes(operand2, 'big')
+    operand_list = [operand1, operand2]
+    return operand_list
+
+
 def operation_add():
-    print("add tbd")
+    operand_list = read_operand()
+    operand1 = operand_list[0]
+    operand2 = operand_list[1]
+    byte_sum = operand1 + operand2
+    return byte_sum
+
+
+'''def operation_add():
+    operand1 = readfile.read_byte()
+    operand2 = readfile.read_byte()
+    operand1 = int.from_bytes(operand1, 'big')
+    operand2 = int.from_bytes(operand2, 'big')
+    byte_sum = operand1 + operand2
+    return byte_sum'''
+
 
 def operation_subtract():
-    print("sub tbd")
+    operand_list = read_operand()
+    operand1 = operand_list[0]
+    operand2 = operand_list[1]
+    byte_sub = operand1 - operand2
+    return byte_sub
+
 
 def operation_multiply():
-    print("mult tbd")
+    operand_list = read_operand()
+    operand1 = operand_list[0]
+    operand2 = operand_list[1]
+    byte_multi = operand1 * operand2
+    return byte_multi
+
 
 def operation_divide():
-    print("div tbd")
+    operand_list = read_operand()
+    operand1 = operand_list[0]
+    operand2 = operand_list[1]
+    byte_div = operand1 / operand2
+    return byte_div
+
 
 def operation_print():
-    print("print tbd")
+    byte_str = b''
+    while (next_byte := readfile.read_byte()) != b'\n':
+        byte_str = byte_str + next_byte
+    byte_str = byte_str.decode('ASCII')
+    return byte_str
 
-
-
-# Invoke the main method to run the program.
 main()
