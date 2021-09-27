@@ -65,7 +65,7 @@ def verify_magic_num():
     for i in range(0, 4):
         magic_num += readfile.read_byte()
 
-    if(magic_num == b'\x31\x41\xFA\xCE'):
+    if (magic_num == b'\x31\x41\xFA\xCE'):
         print("This is a valid The Machine™ file")
     else:
         print("This is NOT a valid The Machine™ file. It is either corrupted or of a different format.")
@@ -96,12 +96,13 @@ def parse_operations(num_operations):
     for i in range(0, num_operations):
         operation_index = int.from_bytes(readfile.read_byte(), 'big')
         if operation_index <= 5 and operation_index > 0:
-            [operation_add,
-             operation_subtract,
-             operation_multiply,
-             operation_divide,
-             operation_print
-            ][operation_index-1]()
+            opResult = [operation_add,
+                        operation_subtract,
+                        operation_multiply,
+                        operation_divide,
+                        operation_print
+                        ][operation_index - 1]()
+            print(opResult)
         else:
             print('Invalid operation:', operation_index)
             exit(1)
@@ -115,8 +116,8 @@ def read_operand():
     :rtype: list
     :author: Eden Basso
     """
-    operand1 = readfile.read_byte()
-    operand2 = readfile.read_byte()
+    operand1 = readfile.read_byte() + readfile.read_byte()
+    operand2 = readfile.read_byte() + readfile.read_byte()
     operand1 = int.from_bytes(operand1, 'big')
     operand2 = int.from_bytes(operand2, 'big')
     operand_list = [operand1, operand2]
@@ -179,8 +180,8 @@ def operation_divide():
     operand_list = read_operand()
     operand1 = operand_list[0]
     operand2 = operand_list[1]
-    quotient = operand1 / operand2
-    return quotient
+    difference = operand1 / operand2
+    return difference
 
 
 def operation_print():
