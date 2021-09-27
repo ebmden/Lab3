@@ -4,13 +4,18 @@
 - Fall 2021
 - Lab 3
 - Names:
-  -
-  -
+  - Lucas G
+  - Eden B
 "The Machine" implementation of parsing and executing a program.
 The application reads a file name from the user and executes the contents of the file or sends an error if the file format is not valid.
 The file format is describe in "The Machine" exercise and the lab description.
-Introduction: (Describe the lab in your own words)
-Summary: (Summarize your experience with the lab, what you learned, what you liked, what you disliked, and any suggestions you have for improvement)
+
+Introduction:
+The goal is to make a working implimentation of "The Machine" format in python.
+
+Summary:
+We learned about processing bytes from a file, deciphering raw data, and executing what that data represents.
+I enjoyed this lab, because it was the first one in which we got to impliment something. It's interesting (and rewarding, even) to impliment a protocol, even if it's a simple one.
 """
 
 # import the readfile modules to read bytes from a file
@@ -60,20 +65,21 @@ def parse_operations(num_operations):
     for i in range(0, num_operations):
         operation_index = int.from_bytes(readfile.read_byte(), 'big')
         if operation_index <= 5 and operation_index > 0:
-            [operation_add,
+            opResult = [operation_add,
              operation_subtract,
              operation_multiply,
              operation_divide,
              operation_print
             ][operation_index-1]()
+            print(opResult)
         else:
             print('Invalid operation:', operation_index)
             exit(1)
 
 
 def read_operand():
-    operand1 = readfile.read_byte()
-    operand2 = readfile.read_byte()
+    operand1 = readfile.read_byte() + readfile.read_byte()
+    operand2 = readfile.read_byte() + readfile.read_byte()
     operand1 = int.from_bytes(operand1, 'big')
     operand2 = int.from_bytes(operand2, 'big')
     operand_list = [operand1, operand2]
