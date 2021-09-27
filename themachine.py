@@ -93,15 +93,6 @@ def operation_add():
     byte_sum = operand1 + operand2
     return byte_sum
 
-
-'''def operation_add():
-    operand1 = readfile.read_byte()
-    operand2 = readfile.read_byte()
-    operand1 = int.from_bytes(operand1, 'big')
-    operand2 = int.from_bytes(operand2, 'big')
-    byte_sum = operand1 + operand2
-    return byte_sum'''
-
 #:EB:
 def operation_subtract():
     operand_list = read_operand()
