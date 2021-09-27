@@ -39,11 +39,12 @@ def main():
     execute(program_file)
 
 
-#:LG:
 def execute(program_file):
     """
     - Execute a program file formatted for "The Machine"
+
     :param str program_file: name of the file to execute
+    :author: Lucas Gral
     """
     readfile.set_file(program_file)
 
@@ -52,8 +53,14 @@ def execute(program_file):
     parse_operations(num_operations)
 
 
-#:LG:
 def verify_magic_num():
+    """
+        ....
+
+        :return:
+        :rtype:
+        :author: Lucas Gral
+        """
     magic_num = b''
     for i in range(0, 4):
         magic_num += readfile.read_byte()
@@ -65,13 +72,26 @@ def verify_magic_num():
         exit(1)
 
 
-#:LG:
 def read_num_operations():
+    """
+        ....
+
+        :return:
+        :rtype:
+        :author: Lucas Gral
+        """
     return int.from_bytes(readfile.read_byte() + readfile.read_byte(), 'big')
 
 
-#:LG:
 def parse_operations(num_operations):
+    """
+        ....
+
+        :param:
+        :return:
+        :rtype:
+        :author: Lucas Gral
+        """
     print(num_operations, "operations...")
     for i in range(0, num_operations):
         operation_index = int.from_bytes(readfile.read_byte(), 'big')
@@ -178,4 +198,4 @@ def operation_print():
     return byte_str
 
 
-main()
+main()  # invoke main()
