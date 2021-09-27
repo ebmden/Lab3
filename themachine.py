@@ -76,7 +76,7 @@ def parse_operations(num_operations):
             print('Invalid operation:', operation_index)
             exit(1)
 
-
+#:EB:
 def read_operand():
     operand1 = readfile.read_byte() + readfile.read_byte()
     operand2 = readfile.read_byte() + readfile.read_byte()
@@ -85,7 +85,7 @@ def read_operand():
     operand_list = [operand1, operand2]
     return operand_list
 
-
+#:EB:
 def operation_add():
     operand_list = read_operand()
     operand1 = operand_list[0]
@@ -102,7 +102,7 @@ def operation_add():
     byte_sum = operand1 + operand2
     return byte_sum'''
 
-
+#:EB:
 def operation_subtract():
     operand_list = read_operand()
     operand1 = operand_list[0]
@@ -110,7 +110,7 @@ def operation_subtract():
     byte_sub = operand1 - operand2
     return byte_sub
 
-
+#:EB:
 def operation_multiply():
     operand_list = read_operand()
     operand1 = operand_list[0]
@@ -118,7 +118,7 @@ def operation_multiply():
     byte_multi = operand1 * operand2
     return byte_multi
 
-
+#:EB:
 def operation_divide():
     operand_list = read_operand()
     operand1 = operand_list[0]
@@ -126,7 +126,7 @@ def operation_divide():
     byte_div = operand1 / operand2
     return byte_div
 
-
+#:EB:
 def operation_print():
     byte_str = b''
     while (next_byte := readfile.read_byte()) != b'\n':
