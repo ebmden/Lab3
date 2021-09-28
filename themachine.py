@@ -55,10 +55,8 @@ def execute(program_file):
 
 def verify_magic_num():
     """
-        ....
+        Verifies and tells user if the magic number of the file matches the one required by the program
 
-        :return:
-        :rtype:
         :author: Lucas Gral
         """
     magic_num = b''
@@ -74,10 +72,10 @@ def verify_magic_num():
 
 def read_num_operations():
     """
-        ....
+        Reads the number of operations that will need to be read and executed by the program
 
-        :return:
-        :rtype:
+        :return: number of operations in bytes object
+        :rtype: int
         :author: Lucas Gral
         """
     return int.from_bytes(readfile.read_byte() + readfile.read_byte(), 'big')
@@ -85,11 +83,9 @@ def read_num_operations():
 
 def parse_operations(num_operations):
     """
-        ....
+        Parse through operations to execute each appropriate operation for the bytes
 
-        :param:
-        :return:
-        :rtype:
+        :param: int num_operations: number of operations to be executed in the bytes object
         :author: Lucas Gral
         """
     print(num_operations, "operations...")
